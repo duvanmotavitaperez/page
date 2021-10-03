@@ -1,7 +1,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <script src="page.js"></script>
+    <script src="{{url_for('static', filename='js/page.js')}}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>canvas</title>
     <link rel="stylesheet" href="Style.css">
@@ -23,7 +23,7 @@
             </ul>
           </div>
           <div class="form">
-            <form action="{{url_for('user')}}" name="form" id="form" method="GET">
+            <form action= "{{url_for('userAdd')}}" name="form" id="form" method="GET">
                 <input type="text" name="username" value="" placeholder="Nombre de usuario">
                 <input type="password" name="password" value="" placeholder="Contraseña">
                 <button type="submit" id="btn_send">Ingresar</button>

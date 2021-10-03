@@ -1,1 +1,38 @@
-<h1>Tu nombre es {{username}} y tu contraseña es: {{password}}</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="{{url_for('static', filename='js/user.js')}}"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="header-div">
+
+        </div>
+        <div class="header-div"></div>
+    </header>
+    <main>
+        <form  name="" id="form">
+            <input type="text" name="username" id="username">
+            <input type="password" name="password" id="password">
+            <input type="file" name="image" id="image">
+            <input type="file" name="video" id="video">
+            <input type="file" name="ofice" id="ofice">
+            <button id="send">Preview</button>
+        </form>
+        <div>
+            <p id="previewName"></p>
+            <p id="previewPassword"></p>
+            <div>
+                <img alt="Imagen subida" title="image" id="previewImage">
+            </div>
+            <div>
+                <video id="previewVideo"></video>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
