@@ -6,3 +6,9 @@ $id.addEventListener('keyup', ()=>{
     }
     
 })
+
+const $back = document.getElementById('btnback')
+$back.addEventListener('click', () =>{
+
+    location.href="/login/admin"
+})
