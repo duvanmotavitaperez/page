@@ -14,14 +14,28 @@ def about():
 
 @app.route('/login')
 def login():
+    
     return None
 
 @app.route('/admin/addemployee/')
 def adminAdd():
     return render_template('add_employee.html')
 
+@app.route('/admin/findemployee/<int:id>')
+def adminFind(id):
+    return render_template('find_employee.html')
+@app.route('/admin/Editemploye/')
+def adminEdit():
+    return render_template('edit_employee.html')
+
+@app.route('/admin/deleteEmployee/')
+@app.route('/superadmin/deleteEmployee/')
+def adminDelete():
+    return render_template('delete_employee.html')
+
 @app.route('/superadmin/dashboard/')
 def dashboard():
     return render_template('dashboard.html')
 app.run(debug=True, host='127.0.0.1', port=5000)
+
 

@@ -1,6 +1,110 @@
 body {
     margin: 0 5em;
 }
+
+.container-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.container-buttons button{
+    padding: 5px;
+    margin: 5px 30px;
+    color: #fff;
+    border-radius: 12%;
+    background-color: #3B3B3B;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.txt-search {
+    text-align: left;
+    width: 164px;
+    font-size: 20px;
+    background:transparent;
+    border: none;
+    color: rgb(0, 0, 0);
+    vertical-align: middle;
+    height: 24px;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+}
+.txt-search::placeholder {
+    font-size: 1.em;
+    color: #3B3B3B;
+}
+.content-data{
+    display:flex;
+    justify-content: space-between;
+    
+    flex-wrap: wrap;
+}
+.content-data .div-data {
+    display: flex;
+    align-items: center;
+    line-height: 1rem;
+    width: 40%;
+    height: 20%;
+    margin: 0 20px;
+    border-bottom: 1px solid #000;
+    overflow: hidden;
+}
+
+.fa-search {
+    margin-left: 10px;
+    font-size: 1.5rem;
+}
+#input-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 15px;
+    height: 15%;
+    width: 250px;
+    border-bottom: 1px solid rgba(172, 172, 172, 0.568);
+}
+section {
+    width: 100%;
+    align-content: center;
+    height: 70vh;
+}
+.section-div {
+    display: flex;
+
+    margin: 0 auto;
+    width: 75%;
+    height: 100%;
+}
+.section-div figure{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 50%;
+}
+.content-fields {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+}
+.section-div div div{
+    text-align: left;
+    align-items: flex-start;
+    width: 100%;
+    height: 60%;
+}
+figure img {
+    margin: auto 0;
+    width: 15rem;
+    height: auto;
+
+}
+
 p + i {
     font-size: 10em;
     color: #3B3B3B;
@@ -24,8 +128,6 @@ li {
     list-style: none;
 }
 .section-info div div {
-    display: inline-flex;
-    flex-direction: column;
     margin-top: 50px;
     justify-content: center;
     align-items: center;
