@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <img id="logoabout"  src="Logo.jpg" alt="Logo Empresarial">
+        <img id="logoabout"  src="{{url_for('static', filename='media/logo.jpg')}}" alt="Logo Empresarial">
         <nav>
             <ul>
                 <li><a href="{{url_for('index')}}">Home</a></li>
@@ -29,9 +29,9 @@
         <div id="control_panel">
             
             <a href="{{url_for('adminAdd')}}"><figure><img class="img_adm" src="{{url_for('static', filename='media/1.JPG')}}" alt=""><figcaption>Agregar</figcaption></figure></a>
-            <a href="#"><figure><img class="img_adm" src="{{url_for('static', filename='media/3.JPG')}}" alt=""><figcaption>Editar</figcaption></figure></a>
-            <a href="#"><figure><img class="img_adm" src="{{url_for('static', filename='media/2.JPG')}}" alt=""><figcaption>Borrar</figcaption></figure></a>
-            <a href="#"><figure><img class="img_adm" src="{{url_for('static', filename='media/4.JPG')}}" alt=""><figcaption>Buscar</figcaption></figure></a>
+            <a href="{{url_for('adminEdit')}}"><figure><img class="img_adm" src="{{url_for('static', filename='media/3.JPG')}}" alt=""><figcaption>Editar</figcaption></figure></a>
+            <a href="{{url_for('adminDelete')}}"><figure><img class="img_adm" src="{{url_for('static', filename='media/2.JPG')}}" alt=""><figcaption>Borrar</figcaption></figure></a>
+            <a href="{{url_for('adminFind')}}"><figure><img class="img_adm" src="{{url_for('static', filename='media/4.JPG')}}" alt=""><figcaption>Buscar</figcaption></figure></a>
 
         </div>
     </section>
