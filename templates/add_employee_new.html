@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <title>José Arechabala S.A.</title>
+
+    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{url_for('static', filename='media/logo.JPG')}}" alt="Logo">
+        </div>
+        <div class="menuprincipal">
+            <nav>
+                <a href="#" class="op_menu">Home</a>
+                <a href="#" class="op_menu">Nosotros</a>
+                <a href="#" class="op_menu">Ingreso</a>
+            </nav>
+        </div>
+    </header>
+   
+    <main>
+        <h1>Se ha creado el registro exitosamente.</h1>
+        <br><br>
+            <h2>{{name}}</h2><br>
+            <h2>{{cedula}}</h2>br
+            <h2>{{dependencia}}</h2><br>
+            
+       
+    </main>
+
+    <div class="container-back">
+        <div class="back"><a href="{{url_for('adminAdd')}}">Back</a></div>
+    </div>
+    <hr>
+    <footer style="border: 2px solid black;">
+        <h5>FOOTER</h5>
+        <h5>Pie de pagina</h5>
+        <p>logo</p>
+        <p>Informacion adicional</p>
+    </footer>
+</body>
+</html>

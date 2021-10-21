@@ -10,6 +10,8 @@
 </head>
 <body><link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+
+    
     <header>
         <div class="logo">
             <img src="{{url_for('static', filename='media/logo.JPG')}}" alt="Logo">
@@ -33,9 +35,11 @@
             </p>
         </div>
         <div id="formulario">
+            
         <form action="{{url_for('login')}}" method="post">
             <div style="align-items: center;">
                 <p style="text-align: center;"><strong>Login</strong></p>
+                
                 <div style="display: inline; text-align: center;">
                     <p style="display: inline-block; margin: 1rem 5rem 0 4em;"><b>User</b></p>
                     <input type="text" name="user">
