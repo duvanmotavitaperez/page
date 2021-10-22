@@ -25,20 +25,22 @@ def login():
         cursor = con.cursor()
 
         user = cursor.execute("SELECT * FROM empleado WHERE nombre_usuario = ? AND password = ?", (username, password)).fetchone()
-
+        print(type(user))
         print (user)
 
         if user is None:
             mensaje="No se encontro el usuario"
             flash(mensaje)
+            con.close() 
             return render_template('index.html', mensaje=mensaje)
-            
-
+         
+        
         else:
 
             if user[10] == 2:
                 
                 return loginAdmin()
+                
 
             elif user[10] ==3:
 
@@ -47,7 +49,7 @@ def login():
             elif user[10] == 1:
                 
                 return loginSuperadmin()
-
+        con.close() 
     else: 
 
         return render_template('index.html')
@@ -58,11 +60,78 @@ def loginSuperadmin():
 
 @app.route('/login/employee', methods=('GET', 'POST'))
 def loginEmploye():
-    return render_template('user_employee.html')
+
+    if request.method == 'POST':
+
+        username = request.form['user']
+
+        con = sqlite3.connect('db_empleados.db')
+        cursor = con.cursor()
+        
+        cursor.execute("SELECT * FROM empleado WHERE nombre_usuario = ?", (username, )).fetchone
+        for row in cursor:
+            print(row) 
+        
+        cursor.execute("SELECT * FROM contrato WHERE contrato_id = ?", (row[8],)).fetchone
+
+        for rw in cursor:
+            print(rw) 
+
+        cursor.execute("SELECT * FROM dependencia WHERE dependencia_id = ?", (row[9],)).fetchone
+
+        for rw2 in cursor:
+            print(rw2)
+
+        return render_template('user_employee.html', nombre=row[1], id=row[0], direccion=row[5], telefono=row[6], inicio=rw[1], contrato=row[8], fin=rw[2], dependencia=rw2[1], salario=rw[3])
+              
+    else:
+        return render_template('user_employee.html')
+
+
+@app.route('/login/employee/feed', methods=('GET', 'POST'))
+def feed():
+
+    if request.method == 'POST':
+
+        mes = request.form['Mes']
+        username = request.form['id']
+
+        print(username)
+
+        con = sqlite3.connect('db_empleados.db')
+        cursor = con.cursor()
+        
+        cursor.execute("SELECT * FROM empleado WHERE empleado_id = ?", (username, )).fetchone
+        for row1 in cursor:
+            print(row1) 
+        
+        cursor.execute("SELECT * FROM contrato WHERE contrato_id = ?", (row1[8],)).fetchone
+
+        for rw1 in cursor:
+            print(rw1) 
+
+        cursor.execute("SELECT * FROM dependencia WHERE dependencia_id = ?", (row1[9],)).fetchone
+
+        for rw21 in cursor:
+            print(rw21)
+
+        cursor.execute("SELECT * FROM retroalimentacion WHERE mes = ?", (mes,)).fetchone
+
+        for rw31 in cursor:
+            print(rw31)
+      
+        return render_template('user_employee.html', nombre=row1[1], id=row1[0], direccion=row1[5], telefono=row1[6], inicio=rw1[1], contrato=row1[8], fin=rw1[2], dependencia=rw21[1], salario=rw1[3], feed=rw31[3])
+              
+    else:
+        return render_template('user_employee.html')
+
+
 
 @app.route('/login/admin', methods=('GET', 'POST'))
 def loginAdmin():
+ 
     return render_template('view_admin.html')
+    
            
 
 @app.route('/admin/addemployee/', methods=('GET', 'POST'))
@@ -98,16 +167,104 @@ def adminAddnew():
 
         con.commit()
         con.close()
-    return render_template('add_employee_new.html', name=name, cedula=cedula, dependencia=dependencia, usuario=usuario)
+    return render_template('add_employee.html', name=name)
 
 @app.route('/admin/findemployee')
-@app.route('/admin/findemployee/<int:id>')
-def adminFind(id=None):
+def adminFind():
     return render_template('find_employee.html')
+
+@app.route('/admin/findemployee/find', methods = ('GET', 'POST'))
+def find():
+
+    if request.method=='POST':
+
+        cedula = request.form['findbyname']
+        
+        con = sqlite3.connect('db_empleados.db')
+        cursor = con.cursor()
+        
+        cursor.execute("SELECT * FROM empleado WHERE cedula = ?", (cedula,)).fetchone
+        for row in cursor:
+            print(row) 
+        
+        cursor.execute("SELECT * FROM contrato WHERE contrato_id = ?", (row[8],)).fetchone
+
+        for rw in cursor:
+            print(rw) 
+
+        cursor.execute("SELECT * FROM dependencia WHERE dependencia_id = ?", (row[9],)).fetchone
+
+        for rw2 in cursor:
+            print(rw2)
+      
+        return render_template('find_employee.html', nombre=row[1], id=row[0], direccion=row[5], telefono=row[6], inicio=rw[1], contrato=row[8], fin=rw[2], dependencia=rw2[1], salario=rw[3])
+        
+        
+    else: 
+
+        return render_template('find_employee.html')
 
 @app.route('/admin/Editemploye/')
 def adminEdit():
     return render_template('edit_employee.html')
+
+@app.route('/admin/Editemploye/findedit', methods=('GET', 'POST'))
+def findEdit():
+
+    if request.method=='POST':
+        cedula = request.form['findbyname']
+        
+        con = sqlite3.connect('db_empleados.db')
+        cursor = con.cursor()
+        
+        cursor.execute("SELECT * FROM empleado WHERE cedula = ?", (cedula,)).fetchone
+        for row in cursor:
+            print(row) 
+        
+        cursor.execute("SELECT * FROM contrato WHERE contrato_id = ?", (row[8],)).fetchone
+
+        for rw in cursor:
+            print(rw) 
+
+        cursor.execute("SELECT * FROM dependencia WHERE dependencia_id = ?", (row[9],)).fetchone
+
+        for rw2 in cursor:
+            print(rw2)
+      
+        return render_template('edit_employee.html', nombre=row[1], id=row[0], direccion=row[5], telefono=row[6], inicio=rw[1], contrato=row[8], fin=rw[2], dependencia=rw2[1], salario=rw[3])
+        
+    else:
+
+        return render_template('edit_employee.html')
+@app.route('/admin/Editemploye/edit', methods=('GET', 'POST'))
+def Edit():
+
+    if request.method=='POST':
+        nombre = request.form['name']
+        identificador=request.form['cedula']
+        direccion = request.form['direccion']
+        telefono = request.form['telefono']
+        inicio = request.form['inicio']
+        contrato = request.form['contract']
+        fin = request.form['fin']
+        salario = request.form['salario']
+        mes=request.form['Mes']
+        feedback=request.form['txtarea']
+
+        con = sqlite3.connect('db_empleados.db')
+        cursor = con.cursor()
+
+        cursor.execute("UPDATE empleado SET nombre = ?, direccion = ?, telefono = ?  WHERE empleado_id = ?", (nombre, direccion, telefono, identificador))
+        cursor.execute("UPDATE contrato SET fecha_inicio = ?, fecha_fin = ?, salario = ?  WHERE contrato_id = ?", (inicio, fin, salario, contrato))
+        cursor.execute("INSERT INTO retroalimentacion (empleado_id, mes, feedback) values(?, ?, ?)", (identificador, mes, feedback))
+
+        con.commit()
+        con.close()
+
+        return render_template('edit_employee.html', identificador=identificador)
+    else:
+
+        return render_template('edit_employee.html')
 
 @app.route('/admin/deleteEmployee/')
 @app.route('/superadmin/deleteEmployee/')

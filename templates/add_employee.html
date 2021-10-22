@@ -8,7 +8,16 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
     <title>José Arechabala S.A.</title>
+    <script>
 
+        function alerta(){
+            const name= '{{ name }}';
+            if (name){
+                alert("se ha guardado el registro en la base de datos.")
+            }
+        }
+        alerta()
+    </script>
     
 </head>
 <body>
