@@ -8,37 +8,9 @@
 </head>
 <body>
     <header>
-        <div class="header-div">
-
-        </div>
-        <div class="header-div">
-
-        </div>
+        <h1>This is administrator's page</h1>
     </header>
     <main>
-        <div>
-            <form action=""  id="form">
-                <input type="text" name="username" id="usernameId">
-                <input type="password" name="password" id="passwordId">
-                <input type="file" name="image" id="imageId">
-                <input type="file" name="video" id="videoId">
-                <!-- <input type="file" name="ofice" id="oficeId"> -->
-                <!-- <input type="hidden" value="{{url_for('uploadFiles')}}" id="url"> -->
-                <button id="button">Preview</button>
-            </form>
-        </div>
-        
-        <div>
-            <p id="previewName"></p>
-            <p id="previewPassword"></p>
-            <div>
-                <img alt="Imagen subida" title="image" id="previewImage">
-            </div>
-            <div>
-                <video id="previewVideo"></video>
-            </div>
-        </div>
-        <button id="button2">Click</button>
     </main>
     <script src="{{url_for('static', filename='js/code.js')}}"></script>
 </body>

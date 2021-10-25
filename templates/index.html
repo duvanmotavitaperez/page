@@ -1,26 +1,9 @@
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>page</title>
-    <link rel="stylesheet" href="Style.css">
-  </head>
-  <body>
-    <header>
-      <div>
-        <nav>
-          <div class="nav_header_div">
-            <p>Test</p>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <main>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-        Nam, totam blanditiis. Saepe aperiam eligendi expedita sed 
-        corrupti ducimus possimus, odio minima officiis libero necessitatibus 
-        animi inventore repudiandae facere, ab quibusdam!</p>
-    </main>
-    <script src="{{url_for('static', filename='js/index.js')}}"></script>
+  <form id="form">
+      <input type="text" name="user" id="user">
+      <input type="password" name="password" id="password">
+      <button id="send">Enviar</button>
+  </form>
+  <script src="{{url_for('static', filename='js/index.js')}}"></script>
   </body>
 </html>
