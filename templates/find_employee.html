@@ -7,6 +7,20 @@
     <title>Buscar Empleado</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles2.css')}}">
+    <script>
+
+        function verify(){
+
+            const msn = '{{msn}}';
+
+            if (msn){
+                alert(" No existen registros en la BBDD segun la busqueda")
+            }
+        }
+
+        verify();
+
+    </script>
 </head>
 <body>
     <header>
@@ -24,10 +38,10 @@
     <main>
 
     <div id="findform">
-        <form action="enviar" method="post" >
+        <form action="{{url_for('find')}}" method="post" >
             <table>
                 <tr>
-                    <td>Find By Id</td><td><input type="text" name="findbyname"></td><td><input type="button" value="Buscar"></td>
+                    <td>Buscar por cedula</td><td><input type="number" name="findbyname" autocomplete="off" required></td><td><input type="submit" value="Buscar"></td>
                 </tr>
             </table>
         </form>
@@ -43,26 +57,26 @@
                 <div>
                     <tr>
                     <div style="display: inline; text-align: center;">
-                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Name</b></p></td>
+                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Name : {{nombre}}</b></p></td>
                         
                     </div>
                     </tr>
                   
                     <tr>
                     <div style="display: inline; text-align: center;">
-                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>ID</b></p></td>
+                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>ID : {{id}}</b></p></td>
                         
                     </div>
                      </tr>
                     <tr>
                     <div style="display: inline; text-align: center;">
-                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>divección</b></p></td>
+                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>dirección : {{direccion}}</b></p></td>
                         
                     </div>
                      </tr>
                      <tr>
                     <div style="display: inline; text-align: center;">
-                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Phone</b></p></td>
+                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Telefono : {{telefono}}</b></p></td>
                         
                     </div>
                     </tr>
@@ -73,31 +87,31 @@
                 <div>
                     <tr>
                     <div style="display: inline; text-align: center;">
-                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Date of Admision</b></p></td>
+                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Fecha inicio contrato: {{inicio}}</b></p></td>
                         
                     </div>
                     </tr>
                     <tr>
                     <div style="display: inline; text-align: center;">
-                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Type of contract</b></p></td>
+                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Serie Contrato : {{contrato}}</b></p></td>
                         
                     </div>
                     </tr>
                     <tr>
                     <div style="display: inline; text-align: center;">
-                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Contract end Date</b></p></td>
+                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Fecha fin contrato : {{fin}}</b></p></td>
                         
                     </div>
                     </tr>
                     <tr>
                     <div style="display: inline; text-align: center;">
-                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Dependence</b></p></td>
+                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Dependencia : {{dependencia}}</b></p></td>
                         
                     </div>
                     </tr>
                     <tr>
                     <div style="display: inline; text-align: center;">
-                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Salary</b></p></td>
+                        <td><p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Salario : {{salario}}</b></p></td>
                         
                     </div>
                     </tr>
@@ -109,8 +123,6 @@
            <div class="just">
                 
             </div>
-
-        
         
     </main>
     

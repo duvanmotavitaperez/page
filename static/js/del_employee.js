@@ -12,3 +12,9 @@ $back.addEventListener('click', () =>{
 
     location.href="/login/admin"
 })
+
+const $del = document.getElementById('btndel')
+$back.addEventListener('click', () =>{
+
+    location.href="/admin/deleteEmployee/del"
+})
