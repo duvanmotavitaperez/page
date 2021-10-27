@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
     <title>José Arechabala S.A.</title>
+
+    <script>
+
+        function verify(){
+
+            const message ="{{mensaje}}"
+
+            if (message){
+
+                alert(message)
+            }
+
+        }
+
+        verify()
+    </script>
     
 </head>
 <body>
@@ -17,9 +33,22 @@
         </div>
         <div class="menuprincipal">
             <nav>
-                <a href="#" class="op_menu">Home</a>
+                
                 <a href="{{url_for('about')}}" class="op_menu">Nosotros</a>
-                <a href="#" class="op_menu">Ingreso</a>
+                {% if session['user'] %}
+                    {% if session['rol']=="Empleado" %}
+                    <a href="{{url_for('loginEmploye')}}" class="op_menu">Perfil y Feedback</a>
+                    <p style="display: inline;"><strong>Usuario </strong> {{session['user']}}</p>
+                    <a href="{{url_for('logout')}}" class="op_menu">Cerrar sesion</a>
+                    {% else %}
+
+                        <a href="{{url_for('loginAdmin')}}" class="op_menu">Admin Board</a>
+                        <p style="display: inline;"><strong>Usuario </strong> {{session['user']}}</p>
+                        <a href="{{url_for('logout')}}" class="op_menu">Cerrar sesion</a>
+
+                    {% endif %}
+                {% endif %}
+                
             </nav>
         </div>
     </header>
@@ -41,12 +70,12 @@
                 
                 <div style="display: inline; text-align: center;">
                     <p style="display: inline-block; margin: 1rem 5rem 0 4em;"><b>User</b></p>
-                    <input type="text" name="user">
+                    <input type="text" name="user", required id="user">
                 </div>
                 <br>
                 <div style="display: inline; text-align: center;">
                     <p style="display: inline-block; margin: 1rem 3rem 0 4em;"><b>Password</b></p>
-                    <input type="password" name="password">
+                    <input type="password" name="password" required id="pass">
                 </div>
                 <div>
                     <a href="#" style="display: inline-block; margin: 1rem 10rem 0 2em;">Forgot your password?</a>
@@ -66,5 +95,18 @@
         <p>logo</p>
         <p>Informacion adicional</p>
     </footer>
+    <script>
+
+        function verifylog(){
+            const sesion = "{{session['user']}}";
+            if (sesion){
+                const form = document.getElementById("formulario");
+                form.style.display="none";
+            }
+        
+        }
+        verifylog();
+
+    </script>
 </body>
 </html>
