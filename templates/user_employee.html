@@ -7,6 +7,20 @@
     <title>Empleado</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles2.css')}}">
+
+    <script>
+
+        function verify(){
+
+            const message = "{{msn}}";
+
+            if(message){
+                alert("No existe aun retroalimentacion para el mes seleccionado");
+            }
+        }
+
+        verify();
+    </script>
 </head>
 <body>
     <header>
@@ -15,9 +29,12 @@
         </div>
         <div class="menuprincipal">
             <nav>
-                <a href="#" class="op_menu">Home</a>
-                <a href="#" class="op_menu">Nosotros</a>
-                <a href="#" class="op_menu">Ingreso</a>
+                <a href="{{url_for('index')}}" class="op_menu">Home</a>
+                <a href="{{url_for('about')}}" class="op_menu">Nosotros</a>
+
+                <p style="display: inline;"><strong>Usuario:</strong> {{session['user']}}</p>
+
+                <a href="{{url_for('logout')}}" class="op_menu">Cerrar sesion</a>
             </nav>
         </div>
     </header>
@@ -105,18 +122,10 @@
                         Seleccione mes para feedback 
                             
                             <select name="Mes" id="selectmes">
-                            <option value="enero">Enero</option>
-                            <option value="febrer">Febrero</option>
-                            <option value="marzo">Marzo</option>
-                            <option value="abril">Abril</option>
-                            <option value="mayo">Mayo</option>
-                            <option value="junio">Junio</option>
-                            <option value="julio">Julio</option>
-                            <option value="agosto">Agosto</option>
-                            <option value="septiembre">Septiembre</option>
-                            <option value="octubre">Octubre</option>
-                            <option value="noviembre">Noviembre</option>
-                            <option value="diciembre">Diciembre</option>
+                                <option value=""> Seleccione mes </option>
+                            {% for mes in meses%}
+                                <option value="{{mes}}">{{mes}}</option>
+                            {% endfor%}
 
                         </select>
 

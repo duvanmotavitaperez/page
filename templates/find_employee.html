@@ -7,6 +7,20 @@
     <title>Buscar Empleado</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles2.css')}}">
+    <script>
+
+        function verify(){
+
+            const msn = '{{msn}}';
+
+            if (msn){
+                alert(" No existen registros en la BBDD segun la busqueda")
+            }
+        }
+
+        verify();
+
+    </script>
 </head>
 <body>
     <header>
@@ -27,7 +41,7 @@
         <form action="{{url_for('find')}}" method="post" >
             <table>
                 <tr>
-                    <td>Find By Id</td><td><input type="text" name="findbyname" autocomplete="off"></td><td><input type="submit" value="Buscar"></td>
+                    <td>Buscar por cedula</td><td><input type="number" name="findbyname" autocomplete="off" required></td><td><input type="submit" value="Buscar"></td>
                 </tr>
             </table>
         </form>

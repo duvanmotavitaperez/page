@@ -17,7 +17,12 @@
                 <li><a href="{{url_for('index')}}">Home</a></li>
                 <li><a href="#">Nosotros</a></li>
                 <li><a href="{{url_for('index')}}">Ingreso</a></li>
+                {% if session['user'] %}
+                    <p style="display: inline;"><strong>Usuario </strong> {{session['user']}}</p>
+                    <a href="{{url_for('logout')}}" class="op_menu">Cerrar sesion</a>
+                {% endif %}
             </ul>
+                
         </nav>
     </header>
 

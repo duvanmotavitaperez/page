@@ -14,9 +14,11 @@
         <nav>
             <ul>
                 <li><a href="{{url_for('index')}}">Home</a></li>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="{{url_for('index')}}">Ingreso</a></li>
+                <li><a href="{{url_for('about')}}">Nosotros</a></li>
+                <p style="display: inline;"><strong>Usuario:</strong> {{session['user']}}</p>
+                <li><a style="left: 250px;"href="{{url_for('logout')}}">Cerrar sesion</a></li>
             </ul>
+            
         </nav>
     </header>
 
