@@ -18,8 +18,10 @@
                 alert("No existe aun retroalimentacion para el mes seleccionado");
             }
         }
-
         verify();
+        if (window.history.replaceState) {
+            window.history.replaceState(null, null, window.location.href);
+        }
     </script>
 </head>
 <body>

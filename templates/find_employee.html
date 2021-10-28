@@ -29,8 +29,8 @@
         </div>
         <div class="menuprincipal">
             <nav>
-                <a href="#" class="op_menu">Home</a>
-                <a href="#" class="op_menu">Nosotros</a>
+                <a href="{{g.home_page}}" class="op_menu">Home</a>
+                <a href="{{url_for('about')}}" class="op_menu">Nosotros</a>
                 <a href="#" class="op_menu">Ingreso</a>
             </nav>
         </div>
@@ -123,10 +123,9 @@
            <div class="just">
                 
             </div>
-        
     </main>
+    <div class="back"><a  href="#">Back</a></div>
     
-    <div class="back"><a  href="{{url_for('loginAdmin')}}">Back</a></div>
 
     <hr>
 

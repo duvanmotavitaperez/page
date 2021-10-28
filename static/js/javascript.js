@@ -1,6 +1,6 @@
 
 
-let contador = 0
+let contador = 
 function conteo() {
     contador ++;
     document.querySelector("h1").innerHTML = contador;

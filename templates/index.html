@@ -5,13 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="google" content="notraslate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
     <title>José Arechabala S.A.</title>
 
     <script>
-
-        function verify(){
+        !function verify(){
 
             const message ="{{mensaje}}"
 
@@ -19,14 +16,16 @@
 
                 alert(message)
             }
-
-        }
-
-        verify()
+        }()
+        history.replaceState(null, null, 'Ingresar')
+        history.forward()
     </script>
     
 </head>
-<body>
+<body><link rel="stylesheet" href="{{url_for('static', filename='css/normalize.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+
+    
     <header>
         <div class="logo">
             <img src="{{url_for('static', filename='media/logo.JPG')}}" alt="Logo">
@@ -51,7 +50,7 @@
                 
             </nav>
         </div>
-    </header>
+    </header> 
     <main class="conjunto_1">
         <div style="width: 50%; position:relative; left: 5vw; padding-top: 5vh;">
             <p style="border: 1px solid black; text-align: justify; padding: 5rem 2rem; max-height: 15vh;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi repudiandae, nostrum ipsam magni nemo, corporis totam tempore sit laudantium optio eum, ipsa assumenda eius expedita earum! Vel nesciunt dicta atque.  
@@ -80,9 +79,6 @@
                 <div>
                     <a href="#" style="display: inline-block; margin: 1rem 10rem 0 2em;">Forgot your password?</a>
                     <input type="submit" value="Enter" style="padding: 4px;">
-                    {% for message in get_flashed_messages()%}
-                        <div class="alert">{{message}}</div>
-                    {% endfor %}
                 </div>
             </div>
         </form>

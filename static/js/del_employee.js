@@ -1,20 +1,8 @@
-const $id = document.getElementById('ID')
-$id.addEventListener('keyup', ()=>{
-    var id = $id.value
-    if(id.length > 10){
-        $id.value = ''
-    }
-    
-})
+window.onload = () => {
+    const $button = document.querySelector('.icon-nav')
+    const $list = document.getElementById('nav_list')
 
-const $back = document.getElementById('btnback')
-$back.addEventListener('click', () =>{
-
-    location.href="/login/admin"
-})
-
-const $del = document.getElementById('btndel')
-$back.addEventListener('click', () =>{
-
-    location.href="/admin/deleteEmployee/del"
-})
+    $button.addEventListener('click', () => {
+        $list.classList.toggle('translate')
+    })
+}

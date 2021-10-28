@@ -6,12 +6,13 @@
     <meta name="google" content="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/8643eda158.js" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='js/del_employee.js')}}"></script>
     <link rel="stylesheet" href="{{url_for('static', filename='css/styles2.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='css/dashboard.css')}}">
 
     <script>
 
-        function verify(){
+        !function verify(){
             const valores = window.location.search;
             const del = '{{msn}}'
             if (valores){
@@ -20,8 +21,7 @@
             else if (del=="fail"){
                 alert("No se encontro el empleado en la BBDD")
             }
-        } 
-        verify()
+        }()
 
     </script>
     
@@ -37,32 +37,23 @@
                     </div>
                     <ul class="nav-list" id='nav_list'>
                         <li>
-                            <a href="#">Home</a>
+                            <a href="{{g.home_page}}">Home</a>
                         </li>
                         <li>
-                            <a href="#">Nosotros</a>
+                            <a href="{{url_for('about')}}">Nosotros</a>
                         </li>
                         <li>
-                            <a href="#">Ingreso</a>
-                        </li>
-                        <li>
-                            <a href="#">Ingreso</a>
-                        </li>
-                        <li>
-                            <a href="#">Ingreso</a>
-                        </li>
-                        <li>
-                            <a href="#">Ingreso</a>
+                            <a href="{{url_for('logout')}}">Ingreso</a>
                         </li>
                     </ul>
                 </nav>
             </div>
             <div class="container-options">
                  <span>
-                    <i class="fa fa-home" aria-hidden="true"><span class="i-span">Welcome, Super administrator</span></i>
+                    <a href="{{g.home_page}}"><i class="fa fa-home" aria-hidden="true"><span class="i-span">Welcome, Super administrator</span></i></a>
                  </span>
                  <span>
-                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    <a href="{{url_for('logout')}}"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                  </span>
             </div>
         </div>
@@ -157,7 +148,7 @@
             </section>
     </main>
     <div class="container-buttons">
-        <div class="back"><a  href="{{url_for('loginAdmin')}}">Back</a></div>
+        <div class="back"><a  href="{{g.home_page}}">Back</a></div>
         
         <div class="back" id="borrarData"><a  href="{{url_for('delete', id=id)}}">Borrar Registro</a></div>
     </div>
